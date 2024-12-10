@@ -1,5 +1,9 @@
 package com.wayne.blogapp.repository;
 
-public class BlogEntryRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
 
+import com.wayne.blogapp.entity.BlogEntry;
+
+public interface BlogEntryRepository extends MongoRepository<BlogEntry, String>{
+    
 }

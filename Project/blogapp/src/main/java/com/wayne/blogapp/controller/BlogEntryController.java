@@ -19,7 +19,7 @@ import com.wayne.blogapp.entity.BlogEntry;
 @RestController
 @RequestMapping("/blog")
 public class BlogEntryController {
-    private Map<Long, BlogEntry> BlogEntries = new HashMap<>();
+    private Map<String, BlogEntry> BlogEntries = new HashMap<>();
 
     @GetMapping
     public List<BlogEntry> getAll(){
@@ -30,17 +30,18 @@ public class BlogEntryController {
     public boolean createEntry(@RequestBody BlogEntry myEntry){
         BlogEntries.put(myEntry.getId(), myEntry);
         return true;
+
     }
     @GetMapping("id/{id}")
-    public BlogEntry getBlogEntryById(@PathVariable Long id){
+    public BlogEntry getBlogEntryById(@PathVariable String id){
         return BlogEntries.get(id);
     }
     @DeleteMapping("id/{id}")
-    public BlogEntry deleteBlogEntryById(@PathVariable Long id){
+    public BlogEntry deleteBlogEntryById(@PathVariable String id){
         return BlogEntries.remove(id);
     }
     @PutMapping("/id/{id}")
-    public BlogEntry updateBlogEntryById(@PathVariable Long id, @RequestBody BlogEntry myEntry){
+    public BlogEntry updateBlogEntryById(@PathVariable String id, @RequestBody BlogEntry myEntry){
         return BlogEntries.put(id, myEntry);
     }
 }
